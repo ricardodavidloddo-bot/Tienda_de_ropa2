@@ -3,6 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="description" content="Una web de ejemplo para mi negocio" />
+    <meta name="author" content="Ricardo Ginarte" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Urban Threads" />
+    <meta
+      property="og:description"
+      content="Una web de ejemplo para mi negocio"
+    />
+    <meta
+      property="og:image"
+      content="ChatGPT Image 9 dic 2025, 12_01_38.png"
+    />
+    <meta
+      property="og:url"
+      content="https://ejemplo-tienda-de-ropa2.onrender.com/"
+    />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Urban Threads" />
+    <meta
+      name="twitter:description"
+      content="Una web de ejemplo para mi negocio"
+    />
+    <meta
+      name="twitter:image"
+      content="ChatGPT Image 9 dic 2025, 12_01_38.png"
+    />
+
     <title>Urban Threads Boutique</title>
     <!-- Importamos la fuente Poppins -->
     <link
@@ -12,706 +44,17 @@
     <!-- Script de Feather Icons para los íconos (es la única dependencia externa no-estilística) -->
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="HUMANE Typeface/Web-PS/Humane-Regular.css" />
+    <link
+      rel="shortcut icon"
+      href="ChatGPT Image 9 dic 2025, 12_01_38.png"
+      type="image/x-icon"
+    />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      /* Variables CSS para facilitar la gestión de colores */
-      :root {
-        --primary-color: #fbbf24; /* Amarillo vibrante */
-        --secondary-color: #ef4444; /* Rojo para alertas/precios */
-        --dark-color: #1e293b; /* Azul oscuro para fondo/texto principal */
-        --light-color: #f8fafc; /* Blanco roto para fondos */
-        --gray-color: #94a3b8; /* Gris suave */
-        --success-color: #10b981; /* Verde para checkout */
-      }
-
-      /* Reset Básico */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Poppins", sans-serif;
-      }
-
-      body {
-        background-color: var(--light-color);
-        color: var(--dark-color);
-        line-height: 1.6;
-        scroll-behavior: smooth;
-      }
-
-      /* Estilos de Botones Generales */
-      .btn {
-        display: inline-block;
-        padding: 0.6rem 1.2rem;
-        border: none;
-        border-radius: 8px; /* Ligeramente más redondeado */
-        cursor: pointer;
-        font-weight: 600;
-        text-align: center;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-
-      .btn:hover {
-        opacity: 0.9;
-        transform: translateY(-2px);
-        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-      }
-
-      .btn-primary {
-        background-color: var(--primary-color);
-        color: var(--dark-color);
-      }
-
-      .btn-primary:hover {
-        background-color: #eab308; /* Tono de hover más oscuro */
-      }
-
-      .add-to-cart {
-        width: 100%;
-        background-color: var(--secondary-color);
-        color: white;
-        margin-top: 1rem;
-      }
-
-      .add-to-cart:hover {
-        background-color: #dc2626;
-      }
-
-      .checkout-btn {
-        width: 100%;
-        background-color: var(--success-color);
-        color: white;
-      }
-
-      .checkout-btn:hover {
-        background-color: #059669;
-      }
-
-      /* --- Estilos para los Botones de Filtro de la Tienda --- */
-      .filter-buttons {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 1rem;
-        margin-bottom: 2rem;
-        padding: 0 1rem;
-      }
-
-      .filter-btn {
-        padding: 0.5rem 1rem;
-        border: 2px solid var(--dark-color);
-        border-radius: 6px;
-        background-color: transparent;
-        color: var(--dark-color);
-        font-weight: 500;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-      .filter-btn:hover:not(.active) {
-        background-color: var(--dark-color);
-        color: var(--light-color);
-      }
-
-      .filter-btn.active {
-        background-color: var(--primary-color);
-        border-color: var(--primary-color);
-        color: var(--dark-color);
-        font-weight: 700;
-        box-shadow: 0 4px 8px rgba(251, 191, 36, 0.4);
-      }
-      /* --- FIN Estilos para Botones de Filtro --- */
-
-      /* Estilos del Encabezado (Header) */
-      .header {
-        background-color: var(--dark-color);
-        color: var(--light-color);
-        padding: 1rem 4rem; /* Más padding en desktop */
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-      }
-
-      .logo h1 {
-        font-size: 1.8rem;
-        font-weight: 700;
-        color: var(--primary-color);
-      }
-
-      .nav ul {
-        display: flex;
-        list-style: none;
-        gap: 2rem; /* Ajuste de gap para más ítems */
-      }
-
-      .nav a {
-        color: var(--light-color);
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.3s;
-        display: flex;
-        align-items: center;
-      }
-
-      .nav a:hover {
-        color: var(--primary-color);
-      }
-
-      .cart-icon {
-        position: relative;
-        display: flex;
-        align-items: center;
-      }
-
-      .cart-count {
-        background-color: var(--secondary-color);
-        color: white;
-        border-radius: 50%;
-        min-width: 20px;
-        height: 20px;
-        line-height: 20px;
-        text-align: center;
-        font-size: 0.7rem;
-        position: absolute;
-        top: -10px;
-        right: -15px;
-        padding: 0 4px;
-      }
-
-      /* Sección Hero (Banner principal) */
-      .hero {
-        background-image: linear-gradient(
-            rgba(30, 41, 59, 0.6),
-            rgba(22, 22, 59, 0.6)
-          ),
-          url(brandy\ melville\ ceiling\ string\ lights.jfif);
-
-        background-size: cover;
-        background-position: center;
-        height: 70vh; /* Aumento de altura para impacto visual */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        color: white;
-      }
-
-      .hero-content {
-        max-width: 900px;
-        padding: 0 2rem;
-      }
-
-      .hero-content h2 {
-        font-size: 4rem;
-        margin-bottom: 1rem;
-        font-weight: 800;
-        letter-spacing: -1px;
-        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-      }
-
-      .hero-content p {
-        font-size: 1.5rem;
-        margin-bottom: 3rem;
-        font-weight: 400;
-        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-      }
-
-      /* Títulos de Sección */
-      .shop-section {
-        padding: 3rem 0;
-      }
-
-      .section-title {
-        text-align: center;
-        margin: 3rem 0 2.5rem;
-        font-size: 2.5rem;
-        color: var(--dark-color);
-        font-weight: 700;
-      }
-
-      .section-title::after {
-        content: "";
-        display: block;
-        width: 100px;
-        height: 5px;
-        background-color: var(--primary-color);
-        margin: 0.5rem auto 0;
-        border-radius: 2px;
-      }
-
-      /* Grid de Productos */
-      .products-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 2.5rem;
-        padding: 0 4rem 4rem;
-      }
-
-      /* Tarjeta de Producto (Estilos existentes y correctos) */
-      .product-card {
-        background-color: white;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-          box-shadow 0.4s;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .product-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
-      }
-
-      .product-image {
-        width: 100%;
-        height: 250px; /* Altura fija para consistencia */
-        object-fit: cover;
-        border-bottom: 1px solid #e2e8f0;
-      }
-
-      .product-info {
-        padding: 1.5rem;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .product-category {
-        display: inline-block;
-        background-color: var(--dark-color);
-        color: var(--primary-color);
-        padding: 0.3rem 0.7rem;
-        border-radius: 6px;
-        font-size: 0.8rem;
-        font-weight: 600;
-        letter-spacing: 0.5px;
-        margin-bottom: 0.5rem;
-        align-self: flex-start;
-      }
-
-      .product-name {
-        font-size: 1.3rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-        color: var(--dark-color);
-      }
-
-      .product-description {
-        color: var(--gray-color);
-        font-size: 0.9rem;
-        margin-bottom: 1rem;
-        flex-grow: 1; /* Permite que la descripción empuje el precio hacia abajo */
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-      }
-
-      .product-price {
-        font-weight: 700;
-        color: var(--secondary-color);
-        margin-bottom: 0.5rem;
-        font-size: 1.4rem;
-      }
-
-      /* --- ESTILOS PARA LAS NUEVAS SECCIONES --- */
-
-      .info-section {
-        padding: 6rem 4rem;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .info-section p {
-        font-size: 1.1rem;
-        color: var(--dark-color);
-        margin-bottom: 1.5rem;
-      }
-
-      #about-us {
-        background-color: white;
-      }
-
-      #about-us h3 {
-        font-size: 1.8rem;
-        color: var(--primary-color);
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-        font-weight: 600;
-      }
-
-      #local {
-        background-color: var(--dark-color);
-        color: var(--light-color);
-        padding-top: 4rem;
-      }
-
-      #local .section-title {
-        color: var(--light-color);
-      }
-
-      .local-gallery {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
-        margin-top: 3rem;
-      }
-
-      .local-gallery img {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        border-radius: 12px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        transition: transform 0.3s;
-      }
-
-      .local-gallery img:hover {
-        transform: scale(1.03);
-      }
-
-      /* Sección de Contacto (Grid de 2 columnas) */
-      #contact {
-        background-color: var(--light-color);
-        padding-bottom: 4rem; /* Ajustado para eliminar el espacio del mapa anterior */
-      }
-
-      .contact-grid {
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        gap: 3rem;
-        padding-bottom: 0; /* Ya no es necesario */
-      }
-
-      .contact-details h3 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-        color: var(--dark-color);
-        font-weight: 700;
-      }
-
-      .contact-details ul {
-        list-style: none;
-        margin-bottom: 2rem;
-      }
-
-      .contact-details li {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        margin-bottom: 0.8rem;
-        font-size: 1.1rem;
-      }
-
-      .contact-details a {
-        color: var(--dark-color);
-        text-decoration: none;
-      }
-
-      .contact-details a:hover {
-        color: var(--primary-color);
-        text-decoration: underline;
-      }
-
-      .contact-form {
-        background-color: white;
-        padding: 2rem;
-        border-radius: 12px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        height: fit-content; /* Para que la tarjeta se ajuste al contenido si el mapa es más largo */
-      }
-
-      .contact-form label {
-        display: block;
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-        color: var(--dark-color);
-      }
-
-      .contact-form input,
-      .contact-form textarea {
-        width: 100%;
-        padding: 0.75rem;
-        margin-bottom: 1.5rem;
-        border: 1px solid var(--gray-color);
-        border-radius: 8px;
-        font-size: 1rem;
-        transition: border-color 0.3s;
-      }
-
-      .contact-form input:focus,
-      .contact-form textarea:focus {
-        border-color: var(--primary-color);
-        outline: none;
-      }
-
-      /* Estilo del Mapa (Ajustado para estar dentro de la columna) */
-      .location-map {
-        width: 100%;
-        height: 300px; /* Altura ajustada para la columna */
-        overflow: hidden;
-        margin-top: 1.5rem; /* Espaciado con respecto al contenido de arriba */
-        border-radius: 12px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      }
-
-      .location-map iframe {
-        width: 100%;
-        height: 100%;
-        border: 0;
-      }
-
-      /* Pie de página (Footer) */
-      .footer {
-        background-color: var(--dark-color);
-        color: var(--gray-color);
-        text-align: center;
-        padding: 2rem 1rem;
-        font-size: 0.9rem;
-      }
-
-      /* --- MEDIA QUERIES (Ajustes para las nuevas secciones) --- */
-
-      @media (max-width: 1024px) {
-        .header {
-          padding: 1rem 2rem;
-        }
-        .products-grid {
-          padding: 0 2rem 4rem;
-        }
-        .info-section {
-          padding: 4rem 2rem;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .header {
-          flex-direction: column;
-          padding: 1rem 1rem 0.5rem;
-        }
-
-        .nav ul {
-          margin-top: 1rem;
-          gap: 1rem; /* Reduce el espacio */
-          padding-bottom: 0.5rem;
-          flex-wrap: wrap; /* Permite que los ítems se envuelvan */
-          justify-content: center;
-        }
-
-        .hero {
-          height: 50vh;
-        }
-
-        .hero-content h2 {
-          font-size: 2.5rem;
-        }
-
-        .contact-grid {
-          grid-template-columns: 1fr; /* Una sola columna en móvil */
-          padding-bottom: 2rem;
-        }
-
-        .products-grid {
-          grid-template-columns: 1fr 1fr; /* Dos columnas en tablet */
-          padding: 0 1rem 2rem;
-          gap: 1.5rem;
-        }
-
-        .cart-modal {
-          max-width: 85%;
-        }
-
-        .location-map {
-          margin-top: 2rem; /* Más espacio en móvil para mejor separación */
-          height: 250px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .products-grid {
-          grid-template-columns: 1fr; /* Una sola columna en móvil */
-        }
-      }
-
-      /* Modal del Carrito (Estilos existentes y correctos) */
-      .cart-modal {
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 100%;
-        max-width: 420px;
-        height: 100vh;
-        background-color: white;
-        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
-        transform: translateX(100%);
-        transition: transform 0.4s ease-in-out;
-        z-index: 9999;
-        overflow-y: hidden;
-      }
-
-      .cart-modal.active {
-        transform: translateX(0);
-      }
-
-      .cart-content {
-        padding: 1.5rem;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .cart-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1.5rem;
-        padding-bottom: 1rem;
-        border-bottom: 2px solid var(--primary-color);
-      }
-
-      .close-cart {
-        background: none;
-        border: none;
-        font-size: 2rem;
-        cursor: pointer;
-        color: var(--dark-color);
-        line-height: 1;
-        padding: 0;
-        transition: color 0.2s;
-      }
-
-      .close-cart:hover {
-        color: var(--secondary-color);
-      }
-
-      .cart-items {
-        flex-grow: 1;
-        overflow-y: auto;
-        padding-right: 10px;
-        margin-bottom: 1rem;
-      }
-
-      .cart-item {
-        display: flex;
-        gap: 1rem;
-        margin-bottom: 1rem;
-        padding: 1rem 0;
-        border-bottom: 1px dashed #e2e8f0;
-      }
-      .cart-item:last-child {
-        border-bottom: none;
-      }
-
-      .cart-item-image {
-        width: 80px;
-        height: 80px;
-        object-fit: cover;
-        border-radius: 8px;
-        border: 1px solid #f0f0f0;
-      }
-
-      .cart-item-details {
-        flex-grow: 1;
-      }
-
-      .cart-item-name {
-        font-weight: 600;
-        margin-bottom: 0.3rem;
-        font-size: 1rem;
-      }
-
-      .cart-item-price {
-        color: var(--secondary-color);
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-      }
-
-      .cart-item-quantity {
-        display: flex;
-        align-items: center;
-        gap: 0.7rem;
-      }
-
-      .quantity-btn {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        border: 1px solid var(--gray-color);
-        background-color: var(--light-color);
-        cursor: pointer;
-        font-weight: 700;
-        font-size: 1.1rem;
-        line-height: 1;
-        transition: all 0.2s;
-      }
-
-      .quantity-btn:hover {
-        background-color: var(--dark-color);
-        color: white;
-        border-color: var(--dark-color);
-      }
-
-      .remove-item {
-        color: var(--secondary-color);
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 0.9rem;
-        margin-top: 0.5rem;
-        text-decoration: underline;
-        transition: opacity 0.2s;
-      }
-
-      .remove-item:hover {
-        opacity: 0.8;
-      }
-
-      .cart-total {
-        display: flex;
-        justify-content: space-between;
-        font-size: 1.4rem;
-        font-weight: 700;
-        padding: 1.5rem 0;
-        border-top: 1px solid var(--gray-color);
-        margin-top: auto; /* Empuja al fondo */
-      }
-
-      /* Notificación Temporal */
-      .notification {
-        position: fixed;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: var(--success-color);
-        color: white;
-        padding: 1rem 2rem;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        opacity: 1;
-        transition: opacity 0.3s ease-out;
-        z-index: 10000;
-        font-weight: 500;
-      }
-
-      .notification.fade-out {
-        opacity: 0;
-      }
-
-      /* Mensaje de Carrito Vacío */
-      .empty-cart-message {
-        text-align: center;
-        color: var(--gray-color);
-        font-style: italic;
-        padding: 2rem 0;
-      }
+      @import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
     </style>
   </head>
   <body>
@@ -741,6 +84,7 @@
       <!-- Sección Hero -->
       <section id="home" class="hero">
         <div class="hero-content">
+          <img src="/ChatGPT Image 9 dic 2025, 12_01_38.png" alt="logo_img" />
           <h2>Estilo Urbano para Todos</h2>
           <p>Descubre las últimas tendencias en moda urbana</p>
           <a href="#shop" class="btn btn-primary">Explorar Colección</a>
@@ -928,6 +272,29 @@
       </div>
     </div>
 
+    <a
+      href="https://wa.me/5351847199?text=Hola%20vi%20tu%20pagina%20y%20tengo%20una%20duda%20sobre..."
+      target="_blank"
+      rel="noopener noreferrer"
+      class="whatsapp-button fixed bottom-6 right-6 lg:bottom-10 lg:right-10 w-16 h-16 rounded-full flex items-center justify-center shadow-xl hover:shadow-2xl text-white z-9000 cursor-pointer"
+      aria-label="Chatea con nosotros por WhatsApp"
+    >
+      <!-- Icono SVG de WhatsApp para alta calidad -->
+      <svg
+        class="w-8 h-8 md:w-10 md:h-10"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M12 2C6.477 2 2 6.477 2 12C2 14.12 2.69 16.124 3.905 17.756L2.5 22.5L7.382 21.096C8.98 21.684 10.494 22 12 22C17.523 22 22 17.523 22 12C22 6.477 17.523 2 12 2ZM16.5 14.249C16.368 14.536 15.655 14.86 15.111 15.068C14.567 15.275 14.07 15.3 13.573 15.184C13.076 15.068 12.392 14.84 11.662 14.453C10.932 14.066 10.323 13.55 9.851 12.986C9.379 12.422 9.07 11.758 8.954 11.261C8.838 10.764 8.865 10.267 9.072 9.723C9.279 9.179 9.603 8.466 9.89 8.334C10.177 8.202 10.472 8.243 10.738 8.487C10.974 8.718 11.233 8.977 11.472 9.243C11.71 9.509 11.97 9.815 12.03 9.947C12.09 10.079 12.13 10.273 12.029 10.467C11.928 10.661 11.838 10.855 11.748 11.049C11.658 11.243 11.523 11.428 11.388 11.612C11.253 11.796 11.128 11.967 11.208 12.047C11.288 12.127 11.652 12.71 12.275 13.254C12.898 13.798 13.431 13.953 13.625 14.033C13.819 14.113 13.974 14.086 14.129 13.996C14.284 13.906 14.733 13.673 15.182 13.439C15.631 13.205 16.018 13.115 16.143 13.136C16.268 13.157 16.438 13.228 16.563 13.472C16.688 13.716 16.688 14.004 16.5 14.249Z"
+          fill="currentColor"
+        />
+      </svg>
+    </a>
+
     <script>
       // Aseguramos que los íconos se rendericen
       feather.replace();
@@ -951,8 +318,7 @@
             description:
               "Camiseta de algodón con corte urbano y ajuste perfecto.",
             price: 19.99,
-            image:
-              "Hombres Camiseta algodón con estampado de slogan.jfif",
+            image: "Hombres Camiseta algodón con estampado de slogan.jfif",
           },
           {
             id: 3,
@@ -1374,6 +740,21 @@
         // Seleccionar todos los elementos con la clase .reveal
         const revealElements = document.querySelectorAll(".reveal");
         revealElements.forEach((el) => observer.observe(el));
+      });
+
+      // La lógica del botón está contenida en la etiqueta <a> (el atributo href hace la magia).
+      // Sin embargo, podemos añadir un pequeño script para mostrar un mensaje opcional
+      // en la consola o si quisiéramos añadir seguimiento de clics más complejo.
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const whatsappButton = document.querySelector(".whatsapp-button");
+        whatsappButton.addEventListener("click", (event) => {
+          // Opcional: Registrar el evento en la consola
+          console.log(
+            "Botón de WhatsApp presionado. Abriendo chat con mensaje predefinido."
+          );
+          // La acción principal (abrir el enlace) ya está manejada por el atributo href.
+        });
       });
     </script>
   </body>
